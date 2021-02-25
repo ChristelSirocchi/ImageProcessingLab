@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0B5FB89-57FE-4D72-A2DA-7AA4D1B56B1F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ImageProcessingWF</RootNamespace>
+    <AssemblyName>ImageProcessingWF</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ParsingManager\Range.cs" />
+    <Compile Include="Order Statistics\IOrderStat.cs" />
+    <Compile Include="ParsingManager\ParseDataTable.cs" />
+    <Compile Include="ParsingManager\Visitor.cs" />
+    <Compile Include="ParsingManager\ParseParameters.cs" />
+    <Compile Include="FalseColour\PaletteCreator.cs" />
+    <Compile Include="SpatialOperations\SpatialOpCreators.cs" />
+    <Compile Include="SpatialOperations\Rotate.cs" />
+    <Compile Include="SpatialOperations\Mirror.cs" />
+    <Compile Include="FilterBuilder\IFilter.cs" />
+    <Compile Include="SpatialFiltering\ConvFilterCreators.cs" />
+    <Compile Include="IntensityTransformation\LookUpTableTypes.cs" />
+    <Compile Include="FilterBuilder\IFilterCreator.cs" />
+    <Compile Include="Order Statistics\OrderStatCreators.cs" />
+    <Compile Include="Order Statistics\CompositeOrderStatsFilter.cs" />
+    <Compile Include="Order Statistics\SimpleOrderStatsFilters.cs" />
+    <Compile Include="FilterBuilder\ConcreteFilterBuilder.cs" />
+    <Compile Include="FilterBuilder\Director.cs" />
+    <Compile Include="IntensityTransformation\LookUpTableCreators.cs" />
+    <Compile Include="ParsingManager\ParseManager.cs" />
+    <Compile Include="DisplayManager\DisplayManager.cs" />
+    <Compile Include="ParsingManager\IVisitor.cs" />
+    <Compile Include="ParsingManager\IParse.cs" />
+    <Compile Include="FilterBuilder\IBuilder.cs" />
+    <Compile Include="FalseColour\Palette.cs" />
+    <Compile Include="FalseColour\RemapColours.cs" />
+    <Compile Include="SpatialFiltering\SmoothingFilters.cs" />
+    <Compile Include="SpatialFiltering\CompositeFilter.cs" />
+    <Compile Include="SpatialFiltering\EdgeDetectionFilters.cs" />
+    <Compile Include="SpatialFiltering\SharpeningFilters.cs" />
+    <Compile Include="SpatialFiltering\EmbossingFilters.cs" />
+    <Compile Include="SpatialFiltering\ConvMath.cs" />
+    <Compile Include="SpatialFiltering\ConvFilter.cs" />
+    <Compile Include="IntensityTransformation\LookupTable.cs" />
+    <Compile Include="SpatialOperations\Resize.cs" />
+    <Compile Include="DisplayManager\MenuManager.cs" />
+    <Compile Include="Math Functions.cs" />
+    <Compile Include="Image\BitmapExtensions.cs" />
+    <Compile Include="Image\ImageStats.cs" />
+    <Compile Include="Image\ImageFile.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
