@@ -120,14 +120,9 @@ namespace ImageProcessingWF
         public DataTable GetTable() // get table
         {
             visitor.Visit(customParser);
-            if (visitor.Parsing == true)
-            {
-                return customParser.GetTable();
-            }
-            else
-            {
-                return null;
-            }
+
+            return customParser.GetTable();
+
         }
     }
 }
